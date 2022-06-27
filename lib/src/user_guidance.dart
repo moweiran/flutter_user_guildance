@@ -30,14 +30,18 @@ class _UserGuidanceState extends State<UserGuidance> {
   @override
   Widget build(BuildContext context) {
     return UserGuildanceAnchorInherit(
-        child: Stack(children: [
-      widget.child,
-      UserGuidanceInner(
-          controller: widget.controller,
-          duration: widget.duration,
-          tipBuilder: widget.tipBuilder,
-          slotBuilder: widget.slotBuilder,
-          opacity: widget.opacity,)
-    ]));
+      child: Stack(
+        children: [
+          widget.child,
+          UserGuidanceInner(
+            controller: widget.controller,
+            duration: widget.duration,
+            tipBuilder: widget.tipBuilder,
+            slotBuilder: widget.slotBuilder,
+            opacity: widget.opacity,
+          )
+        ],
+      ),
+    );
   }
 }

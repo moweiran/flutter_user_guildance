@@ -46,35 +46,39 @@ class _HomePageState extends State<HomePage> {
         return null;
       },
       child: DefaultTabController(
-          length: tabs.length,
-          child: Scaffold(
-            floatingActionButton: UserGuildanceAnchor(
-                group: 1,
-                step: 1,
-                tag:
-                    "This is tab Floating button. Click it to open new page. It should be friendly to the end user",
-                child: FloatingActionButton(
-                  onPressed: () {
-                    userGuidanceController.show();
-                  },
-                )),
-            body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [
+        length: tabs.length,
+        child: Scaffold(
+          floatingActionButton: UserGuildanceAnchor(
+            group: 1,
+            step: 1,
+            tag:
+                "This is tab Floating button. Click it to open new page. It should be friendly to the end user",
+            child: FloatingActionButton(
+              onPressed: () {
+                userGuidanceController.show();
+              },
+            ),
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
                   TabBar(
                       tabs: tabs.map<Widget>((txt) {
                     var subStep = tabs.indexOf(txt);
                     return Tab(
-                        child: UserGuildanceAnchor(
-                            step: 0,
-                            subStep: subStep,
-                            reportType: AnchorReportParentType.tab,
-                            tag: "This is tab $txt",
-                            child: Text(
-                              txt,
-                              style: const TextStyle(color: Colors.black),
-                            )));
+                      child: UserGuildanceAnchor(
+                        step: 0,
+                        subStep: subStep,
+                        reportType: AnchorReportParentType.tab,
+                        tag: "This is tab $txt",
+                        child: Text(
+                          txt,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    );
                   }).toList()),
                   UserGuildanceAnchor(
                     group: 1,
@@ -85,19 +89,33 @@ class _HomePageState extends State<HomePage> {
                           rect.width, rect.height - 10.0);
                     },
                     child: ElevatedButton(
-                        onPressed: () {
-                          userGuidanceController.show(group: 1);
-                        },
-                        child: const Text("Button")),
+                      onPressed: () {
+                        userGuidanceController.show(group: 1);
+                      },
+                      child: const Text("Button"),
+                    ),
                   ),
                   Expanded(
-                      child: TabBarView(
-                    children: tabs.map<Widget>((txt) => Container()).toList(),
-                  ))
-                ]),
+                    child: TabBarView(
+                      children: [
+                        Container(
+                          child: Text('1'),
+                        ),
+                        Container(
+                          child: Text('2'),
+                        ),
+                        Container(
+                          child: Text('3'),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
